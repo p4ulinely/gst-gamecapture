@@ -1,4 +1,4 @@
-@ECHO ON
+@ECHO OFF
 set errorlevel=
 set TEMP_FILENAME=%TEMP%\%JOB_NAME%_%TAG%.zip
 set FILENAME=%JOB_NAME%_%TAG%.zip
@@ -8,9 +8,9 @@ rmdir /s /q x64
 rmdir /s /q Release
 
 pushd .
-call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Auxiliary\Build\vcvars64.bat" amd64
+call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat" amd64
 popd
-MSBuild.exe /property:Configuration=Release /property:Platform=x64 /target:clean,build
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe /property:Configuration=Release /property:Platform=x64 /target:clean,build
 
 if errorlevel 1 (
   echo "Build Failed with %errorlevel%"
